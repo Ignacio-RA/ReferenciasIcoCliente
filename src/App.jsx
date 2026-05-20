@@ -1,9 +1,9 @@
+import Login from './views/Login';
+
 function App() {
   return (
-    <div>
-      <h1>Sistema de Referencias Bibliográficas</h1>
-    </div>
-  )
+    <Login />
+  );
 }
 
 export default App
