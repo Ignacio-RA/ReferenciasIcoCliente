@@ -27,12 +27,14 @@ function Login() {
       // Extraer el token e informacion de admin de la respuesta
       const token = response.data.token;
       const isAdmin = response.data.usuario.admin;
+      const id_usuario = response.data.usuario.id_usuario;
 
       if (token) {
         // Guardar el JWT y la información de admin en el localStorage del navegador
         localStorage.setItem('token', token);
         localStorage.setItem('isAdmin', isAdmin);
-        
+        localStorage.setItem('id_usuario', id_usuario);
+
         // Redirigir con éxito al Dashboard
         navigate('/dashboard');
       } else {

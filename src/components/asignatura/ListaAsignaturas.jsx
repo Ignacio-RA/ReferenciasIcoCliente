@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import api from '../api/config'
+import api from '../../api/config'
 
 function ListaAsignaturas() {
     const [asignaturas, setAsignaturas] = useState([])
@@ -17,12 +17,6 @@ function ListaAsignaturas() {
             })
     }, [])
 
-    // Función que se ejecutará cuando el usuario haga clic en una tarjeta
-    const handleCardClick = (idAsignatura, nombreAsignatura) => {
-        console.log(`Clic en la asignatura ID: ${idAsignatura} (${nombreAsignatura})`);
-        // Aquí más adelante usarás un enrutador o un estado para filtrar las referencias de esta materia
-    }
-
     if (cargando) {
         return <div className="text-slate-500 font-medium">Cargando asignaturas...</div>
     }
@@ -31,7 +25,7 @@ function ListaAsignaturas() {
         <div>
             <div className="mb-6">
                 <h3 className="text-xl font-bold text-slate-800">Asignaturas</h3>
-                <p className="text-sm text-slate-500">Selecciona una materia para gestionar sus referencias bibliográficas.</p>
+                <p className="text-sm text-slate-500">Consulta las asignaturas y el número de referencias asociadas.</p>
             </div>
 
             {asignaturas.length === 0 ? (
@@ -44,7 +38,6 @@ function ListaAsignaturas() {
                     {asignaturas.map(asignatura => (
                         <div 
                             key={asignatura.id_asignatura}
-                            onClick={() => handleCardClick(asignatura.id_asignatura, asignatura.nombre)}
                             className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs hover:shadow-md hover:border-blue-400 hover:-translate-y-1 transition-all duration-200 cursor-pointer flex flex-col justify-between group"
                         >
                             <div>
@@ -74,12 +67,6 @@ function ListaAsignaturas() {
                                         }`}>
                                             {asignatura.total_referencias}
                                         </strong>
-                                    </span>
-                                </div>
-                                
-                                <div className="text-right h-4">
-                                    <span className="text-blue-500 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                        Ver referencias →
                                     </span>
                                 </div>
                             </div>
